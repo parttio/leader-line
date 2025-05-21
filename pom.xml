@@ -10,6 +10,7 @@
     <artifactId>leader-line</artifactId>
     <version>1.0.1-SNAPSHOT</version>
     <name>LeaderLine</name>
+    <description>Vaadin Java API for LeaderLine JS library</description>
     <packaging>jar</packaging>
     <organization>
         <name>Vaadin Community</name>
