@@ -1,19 +1,18 @@
 package org.parttio;
 
-import java.util.List;
+import com.fasterxml.jackson.annotation.JsonValue;
 
-public class SocketGravity {
-    private List<Object> values; // Each value is String or Number
+public record SocketGravity (int... values) {
 
-    public SocketGravity(Object singleValue) {
-        this.values = List.of(singleValue);
-    }
-
-    public SocketGravity(List<Object> values) {
-        this.values = values;
-    }
-
-    public List<Object> getValues() {
+    @JsonValue
+    public Object json() {
+        if (values.length == 0) {
+            return null;
+        }
+        if (values.length == 1) {
+            return values[0];
+        }
         return values;
     }
+
 }

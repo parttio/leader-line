@@ -18,7 +18,6 @@ import com.vaadin.flow.component.dependency.NpmPackage;
  *     the JS library. The actual implementation is not a component tied to a DOM element.
  * </p>
  */
-// TODO figure out if this approach for loading script really works at all, looks like it doesn't in a project using the addon :-(
 @NpmPackage(value = "leader-line-new", version = "1.1.9")
 @JsModule("./leader-line-addon/leaderline.js")
 public class LeaderLineFactory extends Component {
