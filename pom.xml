@@ -1,14 +1,15 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>in.virit.sb</groupId>
         <artifactId>viritin-addon-project-parent</artifactId>
         <version>0.0.8</version>
-        <relativePath />
+        <relativePath/>
     </parent>
     <groupId>org.parttio</groupId>
     <artifactId>leader-line</artifactId>
-    <version>1.0.1-SNAPSHOT</version>
+    <version>1.0.0-SNAPSHOT</version>
     <name>LeaderLine</name>
     <packaging>jar</packaging>
     <organization>
@@ -30,8 +31,7 @@
         <url>https://github.com/${github.account}/${github.project}</url>
         <connection>scm:git:git://github.com/${github.account}/${github.project}.git</connection>
         <developerConnection>scm:git:ssh://git@github.com:/${github.account}/${github.project}.git</developerConnection>
-      <tag>HEAD</tag>
-  </scm>
+    </scm>
     <issueManagement>
         <system>GitHub</system>
         <url>https://github.com/${github.account}/${github.project}/issues</url>
