@@ -8,7 +8,7 @@
     </parent>
     <groupId>org.parttio</groupId>
     <artifactId>leader-line</artifactId>
-    <version>1.0.1-SNAPSHOT</version>
+    <version>1.1.0-SNAPSHOT</version>
     <name>LeaderLine</name>
     <description>Vaadin Java API for LeaderLine JS library</description>
     <packaging>jar</packaging>
@@ -53,9 +53,9 @@
         </dependency>
 
         <dependency>
-            <groupId>org.parttio</groupId>
-            <artifactId>velocity-component</artifactId>
-            <version>0.0.3</version>
+            <groupId>in.virit</groupId>
+            <artifactId>color</artifactId>
+            <version>0.0.2</version>
         </dependency>
 
         <!-- Spring Boot & vaadin starter coming in to test scope via parent -->

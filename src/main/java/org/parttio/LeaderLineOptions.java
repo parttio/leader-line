@@ -1,9 +1,11 @@
 package org.parttio;
 
+import in.virit.color.Color;
+
 public class LeaderLineOptions {
 
     private Double size;
-    private String color;
+    private Color color;
     private PathType path;
     private SocketType startSocket;
     private SocketType endSocket;
@@ -13,20 +15,20 @@ public class LeaderLineOptions {
 
     private PlugType startPlug;
     private PlugType endPlug;
-    private String startPlugColor;
-    private String endPlugColor;
+    private Color startPlugColor;
+    private Color endPlugColor;
 
     private Double startPlugSize;
     private Double endPlugSize;
 
     private Boolean outline;
-    private String outlineColor;
+    private Color outlineColor;
     private Double outlineSize;
 
     private Boolean startPlugOutline;
     private Boolean endPlugOutline;
-    private String startPlugOutlineColor;
-    private String endPlugOutlineColor;
+    private Color startPlugOutlineColor;
+    private Color endPlugOutlineColor;
     private Double startPlugOutlineSize;
     private Double endPlugOutlineSize;
 
@@ -46,12 +48,12 @@ public class LeaderLineOptions {
         this.size = size;
     }
 
-    public String getColor() {
+    public Color getColor() {
         return color;
     }
 
     // TODO CssColor typing via shared library!!
-    public void setColor(String color) {
+    public void setColor(Color color) {
         this.color = color;
     }
 
@@ -111,19 +113,19 @@ public class LeaderLineOptions {
         this.endPlug = endPlug;
     }
 
-    public String getStartPlugColor() {
+    public Color getStartPlugColor() {
         return startPlugColor;
     }
 
-    public void setStartPlugColor(String startPlugColor) {
+    public void setStartPlugColor(Color startPlugColor) {
         this.startPlugColor = startPlugColor;
     }
 
-    public String getEndPlugColor() {
+    public Color getEndPlugColor() {
         return endPlugColor;
     }
 
-    public void setEndPlugColor(String endPlugColor) {
+    public void setEndPlugColor(Color endPlugColor) {
         this.endPlugColor = endPlugColor;
     }
 
@@ -151,11 +153,11 @@ public class LeaderLineOptions {
         this.outline = outline;
     }
 
-    public String getOutlineColor() {
+    public Color getOutlineColor() {
         return outlineColor;
     }
 
-    public void setOutlineColor(String outlineColor) {
+    public void setOutlineColor(Color outlineColor) {
         this.outlineColor = outlineColor;
     }
 
@@ -183,19 +185,19 @@ public class LeaderLineOptions {
         this.endPlugOutline = endPlugOutline;
     }
 
-    public String getStartPlugOutlineColor() {
+    public Color getStartPlugOutlineColor() {
         return startPlugOutlineColor;
     }
 
-    public void setStartPlugOutlineColor(String startPlugOutlineColor) {
+    public void setStartPlugOutlineColor(Color startPlugOutlineColor) {
         this.startPlugOutlineColor = startPlugOutlineColor;
     }
 
-    public String getEndPlugOutlineColor() {
+    public Color getEndPlugOutlineColor() {
         return endPlugOutlineColor;
     }
 
-    public void setEndPlugOutlineColor(String endPlugOutlineColor) {
+    public void setEndPlugOutlineColor(Color endPlugOutlineColor) {
         this.endPlugOutlineColor = endPlugOutlineColor;
     }
 

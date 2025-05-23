@@ -5,6 +5,9 @@ import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.customfield.CustomField;
 import com.vaadin.flow.dom.Style;
 import com.vaadin.flow.router.Route;
+import in.virit.color.Color;
+import in.virit.color.HexColor;
+import in.virit.color.NamedColor;
 import org.vaadin.firitin.components.orderedlayout.VVerticalLayout;
 import org.vaadin.firitin.components.textfield.VTextField;
 import org.vaadin.firitin.rad.AutoForm;
@@ -37,12 +40,12 @@ public class BasicUsageUI extends VVerticalLayout {
         }};
 
         options = new LeaderLineOptions() {{
-            setColor("#ff00ff");
+            setColor(HexColor.of("#ff00ff"));
             setStartPlug(PlugType.SQUARE);
             setEndPlug(PlugType.ARROW2);
             setDash(new Dash(true, 100.0));
             setEndPlugSize(3.0);
-            setEndPlugColor("green");
+            setEndPlugColor(NamedColor.GREEN);
             setStartSocket(SocketType.BOTTOM);
             setDropShadow(new DropShadow("blue", 2.0, 2.0, 2.5));
             setStartLabel("Start label");
@@ -52,7 +55,7 @@ public class BasicUsageUI extends VVerticalLayout {
             setSize(10.0);
             setOutline(true);
             setOutlineSize(5.0);
-            setOutlineColor("red");
+            setOutlineColor(NamedColor.RED);
             // Start to the line towards bottom right
             setStartSocketGravity(new SocketGravity(200));
             setPath(PathType.FLUID);
@@ -72,14 +75,18 @@ public class BasicUsageUI extends VVerticalLayout {
             leaderLine.position();
         }));
 
-
         add(new Button("Edit configs", e -> {
 
             AutoFormContext context = new AutoFormContext();
             context.withPropertyEditor(ctx -> {
+                // TODO change AutoFormContext so that direct editors can be registered with
+                // class-to-class pairs
                 JavaType primaryType = ctx.beanPropertyDefinition().getPrimaryType();
                 if (primaryType.getRawClass() == SocketGravity.class) {
                     return new SocketGravityField();
+                }
+                if (primaryType.getRawClass() == Color.class) {
+                    return new CssColorField();
                 }
                 return null;
             });
@@ -100,6 +107,35 @@ public class BasicUsageUI extends VVerticalLayout {
             leaderLine.remove();
             leaderLine = LeaderLineFactory.drawLine(button, buttonTwo, options);
         }));
+    }
+
+    /* trivial field to edit CssColor */
+    public static class CssColorField extends CustomField<Color> {
+        private VTextField textField = new VTextField()
+                .withPlaceholder("""
+                        e.g. rgba(255 0 0 / 0.5)
+                        """)
+                ;
+
+        public CssColorField() {
+            add(textField);
+            textField.addValueChangeListener(event -> {
+                // Propagate the event to custom field level...
+                if (event.isFromClient()) {
+                    setModelValue(generateModelValue(), true);
+                }
+            });
+        }
+
+        @Override
+        protected Color generateModelValue() {
+            return Color.parseCssColor(textField.getValue());
+        }
+
+        @Override
+        protected void setPresentationValue(Color newPresentationValue) {
+            textField.setValue(newPresentationValue.toString());
+        }
     }
 
     /*
