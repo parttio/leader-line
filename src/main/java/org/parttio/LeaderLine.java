@@ -34,6 +34,14 @@ public class LeaderLine {
             throw new RuntimeException(e);
         }
 
+        from.addDetachListener(e -> {
+            remove();
+        });
+
+        to.addDetachListener(e -> {
+            remove();
+        });
+
     }
 
     public void position() {
