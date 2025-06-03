@@ -51,7 +51,7 @@ public class BasicUsageUI extends VVerticalLayout {
             setStartLabel("Start label");
             setMiddleLabel("Middle label");
             setEndLabel("End label");
-            setGradient(new Gradient("#ff0000", "#00ff00", 0.0));
+            setGradient(new Gradient(NamedColor.RED, NamedColor.GREEN, 0.0));
             setSize(10.0);
             setOutline(true);
             setOutlineSize(5.0);

@@ -1,11 +1,13 @@
 package org.parttio;
 
+import in.virit.color.Color;
+
 public record Gradient(
-        String startColor,
-        String endColor,
+        Color startColor,
+        Color endColor,
         Double angle
 ) {
-    public static Gradient of(String startColor, String endColor, Double angle) {
+    public static Gradient of(Color startColor, Color endColor, Double angle) {
         return new Gradient(startColor, endColor, angle);
     }
 }

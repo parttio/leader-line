@@ -27,7 +27,6 @@ public class LeaderLine {
             String optionsJson = mapper.writeValueAsString(options);
             UI.getCurrent().getPage().executeJs("""
                     const options = %s;
-                    debugger;
                     window.leaderLine($0, $1, $2, options);
                     """.formatted(optionsJson), id.toString(), from.getElement(), to.getElement());
         } catch (JsonProcessingException e) {
