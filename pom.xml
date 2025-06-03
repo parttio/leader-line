@@ -8,7 +8,7 @@
     </parent>
     <groupId>org.parttio</groupId>
     <artifactId>leader-line</artifactId>
-    <version>1.1.2</version>
+    <version>1.1.3-SNAPSHOT</version>
     <name>LeaderLine</name>
     <description>Vaadin Java API for LeaderLine JS library</description>
     <packaging>jar</packaging>
@@ -31,7 +31,7 @@
         <url>https://github.com/${github.account}/${github.project}</url>
         <connection>scm:git:git://github.com/${github.account}/${github.project}.git</connection>
         <developerConnection>scm:git:ssh://git@github.com:/${github.account}/${github.project}.git</developerConnection>
-      <tag>leader-line-1.1.2</tag>
+      <tag>HEAD</tag>
   </scm>
     <issueManagement>
         <system>GitHub</system>
