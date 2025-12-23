@@ -1,7 +1,9 @@
 package org.parttio;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import in.virit.color.Color;
 
+@JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class LeaderLineOptions {
 
     private Double size;

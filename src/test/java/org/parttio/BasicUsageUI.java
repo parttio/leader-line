@@ -1,17 +1,17 @@
 package org.parttio;
 
-import com.fasterxml.jackson.databind.JavaType;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.customfield.CustomField;
+import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.dom.Style;
 import com.vaadin.flow.router.Route;
 import in.virit.color.Color;
 import in.virit.color.HexColor;
 import in.virit.color.NamedColor;
 import org.vaadin.firitin.components.orderedlayout.VVerticalLayout;
-import org.vaadin.firitin.components.textfield.VTextField;
 import org.vaadin.firitin.rad.AutoForm;
 import org.vaadin.firitin.rad.AutoFormContext;
+import tools.jackson.databind.JavaType;
 
 import java.util.Arrays;
 
@@ -48,9 +48,10 @@ public class BasicUsageUI extends VVerticalLayout {
             setEndPlugColor(NamedColor.GREEN);
             setStartSocket(SocketType.BOTTOM);
             setDropShadow(new DropShadow("blue", 2.0, 2.0, 2.5));
-            setStartLabel("Start label");
-            setMiddleLabel("Middle label");
-            setEndLabel("End label");
+            // TOOD figure out why these don't work, dies totally in Safari
+            //setStartLabel("Start label");
+            //setMiddleLabel("Middle label");
+            //setEndLabel("End label");
             setGradient(new Gradient(NamedColor.RED, NamedColor.GREEN, 0.0));
             setSize(10.0);
             setOutline(true);
@@ -64,6 +65,7 @@ public class BasicUsageUI extends VVerticalLayout {
         }};
 
         leaderLine = LeaderLineFactory.drawLine(button, buttonTwo, options);
+        //leaderLine = LeaderLineFactory.drawLine(button, buttonTwo);
 
         add(button, buttonTwo, new Button("Random places", event -> {
             button.getStyle().setLeft((200 + Math.random() * 400) + "px");
@@ -111,11 +113,9 @@ public class BasicUsageUI extends VVerticalLayout {
 
     /* trivial field to edit CssColor */
     public static class CssColorField extends CustomField<Color> {
-        private VTextField textField = new VTextField()
-                .withPlaceholder("""
-                        e.g. rgba(255 0 0 / 0.5)
-                        """)
-                ;
+        private TextField textField = new TextField() {{
+            setPlaceholder("e.g. rgba(255 0 0 / 0.5)");
+        }};
 
         public CssColorField() {
             add(textField);
@@ -143,11 +143,9 @@ public class BasicUsageUI extends VVerticalLayout {
      */
     public class SocketGravityField extends CustomField<SocketGravity> {
 
-        private VTextField textField = new VTextField()
-                .withPlaceholder("""
-                        "int, int" or "int"
-                        """)
-                ;
+        private TextField textField = new TextField(){{
+            setPlaceholder("\"int, int\" or \"int");
+        }};
 
         public SocketGravityField() {
             add(textField);

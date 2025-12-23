@@ -1,10 +1,9 @@
 package org.parttio;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.UI;
+import tools.jackson.databind.ObjectMapper;
+import tools.jackson.databind.json.JsonMapper;
 
 import java.util.UUID;
 
@@ -12,26 +11,20 @@ import java.util.UUID;
  * A simple wrapper for the LeaderLine library. Construct instances via LeaderLineFactory.
  */
 public class LeaderLine {
-    public static ObjectMapper mapper = new ObjectMapper();
-    static {
-        mapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
-    }
+    public static ObjectMapper mapper = JsonMapper.builder()
+            .addModule(new ColorModule())
+            .build();
 
     private final UUID id = UUID.randomUUID();
     private UI ui;
 
-
     LeaderLine(UI ui, Component from, Component to, LeaderLineOptions options) {
         this.ui = ui;
-        try {
-            String optionsJson = mapper.writeValueAsString(options);
-            UI.getCurrent().getPage().executeJs("""
-                    const options = %s;
-                    window.leaderLine($0, $1, $2, options);
-                    """.formatted(optionsJson), id.toString(), from.getElement(), to.getElement());
-        } catch (JsonProcessingException e) {
-            throw new RuntimeException(e);
-        }
+        String optionsJson = mapper.writeValueAsString(options);
+        UI.getCurrent().getPage().executeJs("""
+                const options = %s;
+                window.leaderLine($0, $1, $2, options);
+                """.formatted(optionsJson), id.toString(), from.getElement(), to.getElement());
 
         from.addDetachListener(e -> {
             remove();
@@ -50,15 +43,11 @@ public class LeaderLine {
     }
 
     public void setOptions(LeaderLineOptions options) {
-        try {
-            String optionsJson = mapper.writeValueAsString(options);
-            ui.getPage().executeJs("""
-                const options = %s;
-                window.leaderLines[$0].setOptions(options);
-                """.formatted(optionsJson), id.toString());
-        } catch (JsonProcessingException e) {
-            throw new RuntimeException(e);
-        }
+        String optionsJson = mapper.writeValueAsString(options);
+        ui.getPage().executeJs("""
+            const options = %s;
+            window.leaderLines[$0].setOptions(options);
+            """.formatted(optionsJson), id.toString());
     }
 
     /**
