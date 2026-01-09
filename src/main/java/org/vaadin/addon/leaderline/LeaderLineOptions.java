@@ -1,4 +1,4 @@
-package org.parttio;
+package org.vaadin.addon.leaderline;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import in.virit.color.Color;

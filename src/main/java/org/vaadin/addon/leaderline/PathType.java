@@ -1,12 +1,12 @@
-package org.parttio;
+package org.vaadin.addon.leaderline;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 
-public enum SocketType {
-    AUTO, TOP, BOTTOM, LEFT, RIGHT;
+public enum PathType {
+    STRAIGHT, ARC, FLUID, MAGNET;
+
     @JsonValue
     public String json() {
         return name().toLowerCase();
     }
-
 }

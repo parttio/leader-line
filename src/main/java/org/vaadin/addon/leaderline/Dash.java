@@ -1,4 +1,4 @@
-package org.parttio;
+package org.vaadin.addon.leaderline;
 
 public record Dash(boolean enabled, Double animation) {
 

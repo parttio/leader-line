@@ -1,12 +1,12 @@
-package org.parttio;
+package org.vaadin.addon.leaderline;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 
-public enum PlugType {
-    DISC, SQUARE, ARROW1, ARROW2, ARROW3, BEHIND;
-
+public enum SocketType {
+    AUTO, TOP, BOTTOM, LEFT, RIGHT;
     @JsonValue
     public String json() {
         return name().toLowerCase();
     }
+
 }
