@@ -19,6 +19,7 @@
         <!-- The version used while developing/testing, update every once in a while -->
         <github.account>parttio</github.account>
         <github.project>leader-line</github.project>
+        <vaadin.version>25.1.5</vaadin.version>
     </properties>
     <url>https://github.com/parttio/leader-line</url>
     <developers>
@@ -43,6 +44,29 @@
             <distribution>repo</distribution>
         </license>
     </licenses>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.vaadin</groupId>
+                <artifactId>vaadin-bom</artifactId>
+                <type>pom</type>
+                <scope>import</scope>
+                <version>${vaadin.version}</version>
+            </dependency>
+            <!-- The add-on itself does not depend on Spring Boot.
+                 This is to simplify testing setup only, to get compatible deps
+                 needed for testing/development. -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>4.0.6</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
     <dependencies>
         
         <dependency>
@@ -54,7 +78,7 @@
         <dependency>
             <groupId>in.virit</groupId>
             <artifactId>color</artifactId>
-            <version>0.0.4</version>
+            <version>1.1.0</version>
         </dependency>
 
         <!-- Spring Boot & vaadin starter coming in to test scope via parent -->
@@ -70,7 +94,7 @@
         <dependency>
             <groupId>in.virit</groupId>
             <artifactId>viritin</artifactId>
-            <version>3.1.0</version>
+            <version>3.5.0</version>
             <scope>test</scope>
         </dependency>
 
